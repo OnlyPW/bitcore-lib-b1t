@@ -1,7 +1,7 @@
 {
-  "name": "bitcore-lib-xbt",
+  "name": "bitcore-lib-b1t",
   "version": "8.22.2",
-  "description": "A pure and powerful JavaScript Bitcoin library.",
+  "description": "A pure and powerful JavaScript B1T library.",
   "author": "BitPay <dev@bitpay.com>",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/senasgr-eth/bitcore-lib-xbt"
+    "url": "https://github.com/OnlyPW/bitcore-lib-b1t"
   },
   "browser": {
     "request": "browser-request"

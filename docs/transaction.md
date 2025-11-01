@@ -1,10 +1,10 @@
 # Transaction
 
-Bitcore provides a very simple API for creating transactions. We expect this API to be accessible for developers without knowing the working internals of bitcoin in deep detail. What follows is a small introduction to transactions with some basic knowledge required to use this API.
+Bitcore provides a very simple API for creating transactions. We expect this API to be accessible for developers without knowing the working internals of B1T in deep detail. What follows is a small introduction to transactions with some basic knowledge required to use this API.
 
 A Transaction contains a set of inputs and a set of outputs. Each input contains a reference to another transaction's output, and a signature that allows the value referenced in that output to be used in this transaction.
 
-Note also that an output can be used only once. That's why there's a concept of "change address" in the bitcoin ecosystem: if an output of 10 BTC is available for me to spend, but I only need to transmit 1 BTC, I'll create a transaction with two outputs, one with 1 BTC that I want to spend, and the other with 9 BTC to a change address, so I can spend this 9 BTC with another private key that I own.
+Note also that an output can be used only once. That's why there's a concept of "change address" in the B1T ecosystem: if an output of 10 B1T is available for me to spend, but I only need to transmit 1 B1T, I'll create a transaction with two outputs, one with 1 B1T that I want to spend, and the other with 9 B1T to a change address, so I can spend this 9 B1T with another private key that I own.
 
 So, in order to transmit a valid transaction, you must know what other transactions on the network store outputs that have not been spent and that are available for you to spend (meaning that you have the set of keys that can validate you own those funds). The unspent outputs are usually referred to as "utxo"s.
 
@@ -99,7 +99,7 @@ Some methods related to adding inputs are:
   - `from(utxos)`: same as above, but passing in an array of Unspent Outputs.
   - `from(utxo, publicKeys, threshold)`: add an input that spends a UTXO with a P2SH output for a Multisig script. The `publicKeys` argument is an array of public keys, and `threshold` is the number of required signatures in the Multisig script.
 
-- `addInput`: Performs a series of checks on an input and appends it to the end of the `input` vector and updates the amount of incoming bitcoins of the transaction.
+- `addInput`: Performs a series of checks on an input and appends it to the end of the `input` vector and updates the amount of incoming B1T coins of the transaction.
 - `uncheckedAddInput`: adds an input to the end of the `input` vector and updates the `inputAmount` without performing any checks.
 
 ### PublicKeyHashInput
@@ -166,7 +166,7 @@ These are the current default values in the bitcore library involved on these ch
 
 ## Fee calculation
 
-When outputs' value don't sum up to the same amount that inputs, the difference in bitcoins goes to the miner of the block that includes this transaction. The concept of a "change address" usually is associated with this: an output with an address that can be spent by the creator of the transaction.
+When outputs' value don't sum up to the same amount that inputs, the difference in B1T coins goes to the miner of the block that includes this transaction. The concept of a "change address" usually is associated with this: an output with an address that can be spent by the creator of the transaction.
 
 For this reason, some methods in the Transaction class are provided:
 
@@ -178,7 +178,7 @@ Internally, a `_changeIndex` property stores the index of the change output (so 
 
 ## Time-Locking transaction
 
-All bitcoin transactions contain a locktime field. The locktime indicates the earliest time a transaction can be added to the blockchain. Locktime allows signers to create time-locked transactions which will only become valid in the future, giving the signers a chance to change their minds. Locktime can be set in the form of a bitcoin block height (the transaction can only be included in a block with a higher height than specified) or a linux timestamp (transaction can only be confirmed after that time). For more information see [bitcoin's development guide section on locktime](https://bitcoin.org/en/developer-guide#locktime-and-sequence-number).
+All B1T transactions contain a locktime field. The locktime indicates the earliest time a transaction can be added to the blockchain. Locktime allows signers to create time-locked transactions which will only become valid in the future, giving the signers a chance to change their minds. Locktime can be set in the form of a B1T block height (the transaction can only be included in a block with a higher height than specified) or a linux timestamp (transaction can only be confirmed after that time). For more information see [bitcoin's development guide section on locktime](https://bitcoin.org/en/developer-guide#locktime-and-sequence-number).
 
 In bitcore, you can set a `Transaction`'s locktime by using the methods `Transaction#lockUntilDate` and `Transaction#lockUntilBlockHeight`. You can also get a friendly version of the locktime field via `Transaction#getLockTime`;
 
